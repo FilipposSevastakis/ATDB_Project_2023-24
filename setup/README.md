@@ -9,4 +9,4 @@ The system is comprised of:
 - Private Network
 
 ## Installation and configuration of Apache Spark over YARN and of HDFS:
-The steps followed for the installation and Apache Spark over Hadoop's YARN 
+The steps followed for the installation of Apache Spark over Hadoop's resource manager, YARN, and of Hadoop's Distributed File System and for the configuration of the necessary environment variables can also be found in the instructions (enter: hyperlink) given.
