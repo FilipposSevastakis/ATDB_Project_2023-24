@@ -3,7 +3,7 @@ Advanced Topics in Databases, ECE NTUA - Course Project (2023/24)
 
 ## 🎯 Objectives:
 1. Successful installation, configuration and management of distributed systems (namely Apache Spark and Apache Hadoop, with Spark being executed on top of Hadoop's resource manager, YARN).
-2. Use and comparison of Spark's APIs and of their configurations when querying (large volumes of) data.
+2. Use and comparison of Spark's APIs and their configurations when querying (large volumes of) data.
 
 ## :page_facing_up: Description: Data-sets and Queries:
 ### Data-sets:
@@ -42,7 +42,8 @@ Print the total number of rows for the entire data-set and the data type of ever
 
 2. a) Calculate the number of crimes committed with the use of firearms of any kind and the average distance (in km) of the crime scene to the police station that is located closest to the crime scene. The results should appear ordered by year in ascending order.
    b) Additionally, calculate the same stats (number of crimes committed with the use of firearms of any kind and average distance) per police station. Results should appear ordered by number of incidents, in descending order.
-
+---
+Full description can be found in 
 
 For the implementation of this project 
 
