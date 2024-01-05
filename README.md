@@ -43,9 +43,7 @@ Print the total number of rows for the entire data-set and the data type of ever
 2. a) Calculate the number of crimes committed with the use of firearms of any kind and the average distance (in km) of the crime scene to the police station that is located closest to the crime scene. The results should appear ordered by year in ascending order.
    b) Additionally, calculate the same stats (number of crimes committed with the use of firearms of any kind and average distance) per police station. Results should appear ordered by number of incidents, in descending order.
 ---
-Full description can be found in 
-
-For the implementation of this project 
+Full description can be found in the [full description](/advanced_db_project.pdf).
 
 
 
