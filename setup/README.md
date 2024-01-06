@@ -8,5 +8,5 @@ The system is comprised of:
   - _okeanos-worker_ node: Role of Slave node for Spark and of Datanode for HDFS
 - Private Network
 
-## Installation and configuration of Apache Spark over YARN and of HDFS:
+## Installation and configuration of Apache Spark (over YARN) and HDFS:
 The steps followed for the installation of Apache Spark over Hadoop's resource manager, YARN, and of Hadoop's Distributed File System and for the configuration of the necessary environment variables can also be found in the instructions (enter: hyperlink) given.
