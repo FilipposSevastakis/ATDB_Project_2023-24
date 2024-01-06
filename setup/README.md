@@ -4,8 +4,8 @@ For the implementation of this project I used "~okeanos", a free-for-academic-pu
 
 The system is comprised of:
 - 2 VMs:
-  - _Master_ node: Role of Master and Slave node for Spark and role of Namenode and Datanode for HDFS
-  - _Worker_ node: Role of Slave node for Spark and of Datanode for HDFS
+  - _okeanos-master_ node: Role of Master and Slave node for Spark and role of Namenode and Datanode for HDFS
+  - _okeanos-worker_ node: Role of Slave node for Spark and of Datanode for HDFS
 - Private Network
 
 ## Installation and configuration of Apache Spark over YARN and of HDFS:
