@@ -27,6 +27,6 @@ crime_incidents_df = crime_incidents_2010_to_2019_df \
             )
 
 #crime_incidents_df.show(10)
-crime_incidents_df.printSchema()
 rows = crime_incidents_df.count()
 print(f"DataFrame Rows count : {rows}")
+crime_incidents_df.printSchema()
