@@ -4,6 +4,9 @@ from pyspark.sql.window import Window
 from pyspark.sql import SparkSession
 from pyspark.sql.types import IntegerType, DoubleType, StringType, TimestampNTZType, DateType
 from pyspark.sql.functions import col, to_date, unix_timestamp, year, month, count, row_number
+import time
+
+start = time.time()
 
 spark = SparkSession \
         .builder \
@@ -25,7 +28,6 @@ crime_incidents_df = crime_incidents_2010_to_2019_df \
             to_date(unix_timestamp(col("DATE OCC"),"MM/dd/yyyy hh:mm:ss a").cast("timestamp"),"yyyy-MM-dd").alias("DATE OCC"),
             )
 
-
 year_window = Window.partitionBy("year").orderBy(col("count").desc())
 
 query_1_df = crime_incidents_df \
@@ -36,4 +38,7 @@ query_1_df = crime_incidents_df \
         .withColumn("#", row_number().over(year_window)) \
         .filter(col("#") <= 3)
 
-query_1_df.show()
+query_1_df.show(45)
+
+end = time.time()
+print("Query 1 DF - Execution Time: ",(end-start), "s")
