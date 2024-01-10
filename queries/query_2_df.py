@@ -4,6 +4,9 @@ from pyspark.sql.window import Window
 from pyspark.sql import SparkSession
 from pyspark.sql.types import IntegerType, DoubleType, StringType, TimestampNTZType, DateType
 from pyspark.sql.functions import col, when
+import time
+
+start = time.time()
 
 spark = SparkSession \
         .builder \
@@ -41,3 +44,5 @@ query_2_df = crime_incidents_df \
 
 query_2_df.show()
 
+end = time.time()
+print("Query 2 DF - Execution Time: ",(end-start), "s")
