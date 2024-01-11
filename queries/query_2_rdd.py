@@ -4,6 +4,9 @@ import re
 from pyspark.sql import SparkSession
 from pyspark.sql.types import IntegerType, DoubleType, StringType, TimestampNTZType, DateType
 from pyspark.sql.functions import col, when
+import time
+
+start = time.time()
 
 spark = SparkSession \
         .builder \
@@ -34,3 +37,5 @@ query_2_rdd = crime_incidents.map(comma_splits) \
 
 print(query_2_rdd.collect())
 
+end = time.time()
+print("Query 2 RDD - Execution Time: ",(end-start), "s")
