@@ -13,27 +13,22 @@ spark = SparkSession \
         .appName("Query 1 DF") \
         .getOrCreate()
 
-crime_incidents_2010_to_2019_df = spark.read.format('csv') \
+crime_incidents_df = spark.read.format('csv') \
         .options(header = True, inferSchema = True) \
-        .load("hdfs://okeanos-master:54310/data/crime_incidents_2010-2019.csv")
+        .load("hdfs://okeanos-master:54310/data/crime_incidents.csv")
 
-crime_incidents_2020_to_curr_df = spark.read.format('csv') \
-        .options(header = True, inferSchema = True) \
-        .load("hdfs://okeanos-master:54310/data/crime_incidents_2020-.csv")
-
-
-crime_incidents_df = crime_incidents_2010_to_2019_df \
-        .union(crime_incidents_2020_to_curr_df) \
+crime_incidents_df = crime_incidents_df \
         .select(
             to_date(unix_timestamp(col("DATE OCC"),"MM/dd/yyyy hh:mm:ss a").cast("timestamp"),"yyyy-MM-dd").alias("DATE OCC"),
             )
 
-year_window = Window.partitionBy("year").orderBy(col("count").desc())
+
+year_window = Window.partitionBy("year").orderBy(col("crime_total").desc())
 
 query_1_df = crime_incidents_df \
         .withColumn("year", year("DATE OCC")) \
         .withColumn("month", month("DATE OCC")) \
-        .groupBy("year", "month").count().alias("crime_total") \
+        .groupBy("year", "month").agg(count("*").alias("crime_total")) \
         .sort(col("year")) \
         .withColumn("#", row_number().over(year_window)) \
         .filter(col("#") <= 3)
