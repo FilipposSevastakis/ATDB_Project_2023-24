@@ -27,3 +27,11 @@ YARN web interface: http://83.212.73.51:8088/cluster
 $SPARK_HOME/sbin/start-history-server.sh
 ```
 Spark History Server web interface: http://83.212.73.51:18080
+
+### Additional Configuration:
+Regarding Spark's History Server I noticed that by default there wasn't any "cleaner" activated, meaning that after many Query executions, that were made, the eventLog that is stored in the HDFS took up too much space (as much as the data at some point). To solve that, as well as prevent it from happening again I added the following lines in the spark-defaults.conf file (found in my file system in the ./opt/bin/spark-3.5.0-bin-hadoop3/conf folder):
+```bash
+spark.history.fs.cleaner.enabled true
+spark.history.fs.cleaner.maxAge  12h
+spark.history.fs.cleaner.interval 1h
+```
