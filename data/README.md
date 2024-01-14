@@ -8,16 +8,6 @@ I initially collected all the data-sets in this (data) directory in okeanos-mast
   ```bash
   wget -O crime_incidents_2020-.csv https://data.lacity.org/api/views/2nrs-mtv8/rows.csv?accessType=DOWNLOAD
   ```
-  At this point it would be to our advantage to concatenate those two csv files before inserting them to the HDFS. Following in this project we would like to compare RDD with Dataframe implementations of a query and in the latter's case we would require two inferSchemas (and a union) instead of one, which leads to "unecessarily" bigger execution time. To this end we execute the following:
-  ```bash
-  tail -n +2 crime_incidents_2020-.csv > temp.csv
-  ```
-  ```bash
-  cat crime_incidents_2010-2019.csv temp.csv > crime_incidents.csv
-  ```
-  ```bash
-  rm crime_incidents_2010-2019.csv crime_incidents_2020-.csv temp.csv
-  ```
 - For the LAPD Stations (Query 4) I downloaded the csv locally (in my machine) from https://geohub.lacity.org/datasets/lahub::lapd-police-stations/explore and then executed the following from the file's location to send the csv to the master:
   ```bash
   scp ./LAPD_Police_Stations.csv user@snf-39850.ok-kno.grnetcloud.net:./data
