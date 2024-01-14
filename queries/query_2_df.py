@@ -13,18 +13,24 @@ spark = SparkSession \
         .appName("Query 2 DF") \
         .getOrCreate()
 
-crime_incidents_df = spark.read.format('csv') \
+crime_incidents_2010_to_2019_df = spark.read.format('csv') \
         .options(header = True, inferSchema = True) \
-        .load("hdfs://okeanos-master:54310/data/crime_incidents.csv") \
+        .load("hdfs://okeanos-master:54310/data/crime_incidents_2010-2019.csv")
+
+crime_incidents_2020_to_curr_df = spark.read.format('csv') \
+        .options(header = True, inferSchema = True) \
+        .load("hdfs://okeanos-master:54310/data/crime_incidents_2020-.csv")
 
 
-crime_incidents_df = crime_incidents_df \
+crime_incidents_df = crime_incidents_2010_to_2019_df \
+        .union(crime_incidents_2020_to_curr_df) \
         .select(
             col("TIME OCC").cast("int"),
             col("Premis Desc"),
             )
 
 street_crime_incidents_df = crime_incidents_df.filter(col("Premis Desc") == "STREET")
+
 
 query_2_df = street_crime_incidents_df \
         .withColumn(
