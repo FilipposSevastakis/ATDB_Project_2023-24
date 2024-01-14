@@ -14,7 +14,7 @@ spark = SparkSession \
         .getOrCreate() \
         .sparkContext
 
-crime_incidents_rdd = spark.textFile("hdfs://okeanos-master:54310/data/crime_incidents.csv")
+crime_incidents_rdd = spark.textFile("hdfs://okeanos-master:54310/data/crime_incidents_2010-2019.csv,hdfs://okeanos-master:54310/data/crime_incidents_2020-.csv")
 
 
 def time_of_day(hour):
@@ -29,7 +29,7 @@ def time_of_day(hour):
 
 def comma_splits(x):
     return re.split(r',(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)', x)
-
+        
 query_2_rdd = crime_incidents_rdd.map(comma_splits) \
         .filter(lambda x: x[15] == "STREET") \
         .map(lambda x: (time_of_day(int(x[3])), 1)) \
