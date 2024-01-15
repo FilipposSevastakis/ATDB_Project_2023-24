@@ -49,11 +49,12 @@ crime_incidents_df = crime_incidents_2010_to_2019_df \
 crime_x_station_df = crime_incidents_df.join(LAPD_Police_Stations_df, "PREC") \
         .withColumn("year", year("DATE OCC")) \
         .withColumn("distance", get_distance_udf(col("LAT"), col("LON"), col("Y"), col("X"))) \
+        .persist()
 
 
 query_4a_df = crime_x_station_df \
         .groupBy("year").agg(
-                format_number(avg(col("distance")), 4).alias("average_distance"),
+                format_number(avg(col("distance")), 3).alias("average_distance"),
                 count("*").alias("#")
                 ) \
         .orderBy(col("year")) \
@@ -61,7 +62,7 @@ query_4a_df = crime_x_station_df \
 
 query_4b_df = crime_x_station_df \
         .groupBy("division").agg(
-                format_number(avg(col("distance")),4).alias("average_distance"),
+                format_number(avg(col("distance")),3).alias("average_distance"),
                 count("*").alias("#")
                 ) \
         .orderBy(col("#").desc()) \
