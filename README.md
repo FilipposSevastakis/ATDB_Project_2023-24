@@ -1,4 +1,4 @@
-# ATDB_Term_Project
+# ATDB Term Project 2023/24
 Advanced Topics in Databases, ECE NTUA - Term Project (2023/24)
 
 ## 🎯 Objectives:
