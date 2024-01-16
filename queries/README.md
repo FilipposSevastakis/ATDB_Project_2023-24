@@ -26,5 +26,5 @@ spark-execute --num-executors <NUM_EXECUTORS> --py-files <PATH_TO_ZIPPED_FILES> 
 ```
 where <PATH_TO_ZIPPED_FILES> the path to any zipped file one might want to distribute to the workers to be used in the query execution.
 
-## Comments:
-1) For
+## Comment:
+While implementing the 4th Query, the 
