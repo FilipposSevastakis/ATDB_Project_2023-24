@@ -1,13 +1,13 @@
 # Queries' Guide
 ## Execution:
-For Queries 0-3 one only has to execute the following shell command:
+❖ For Queries 0-3 one only has to execute the following shell command:
 ```bash
 spark-execute --num-executors <NUM_EXECUTORS> <YOUR_SPARK_JOB_FILE_PATH>
 ```
 where <NUM_EXECUTORS> an (optional) configuration parameter that defines how many executors will be used (in total amongst the datanodes).
 
 
-For the 4th Query, for the distance calculation of two (latitude, longitude) coordinations I opted for _geopy_, a Python library that provides tools for geocoding, and in particular it's function geopy.distance.geodesic. As with any other library one might use, it has to be installed in a way to also ensure that it will be distributed to the worker nodes when running the query. To that end, one may execute the following commands to create a python environment, to install geopy and zip it along with all of it's dependencies:
+❖ For the 4th Query, for the distance calculation of two (latitude, longitude) coordinations I opted for _geopy_, a Python library that provides tools for geocoding, and in particular it's function geopy.distance.geodesic. As with any other library one might use, it has to be installed in a way to also ensure that it will be distributed to the worker nodes when running the query. To that end, one may execute the following commands to create a python environment, to install geopy and zip it along with all of it's dependencies:
 ```bash
 sudo apt install python3.10-venv
 python3 -m venv myenv
@@ -26,7 +26,7 @@ spark-execute --num-executors <NUM_EXECUTORS> --py-files <PATH_TO_ZIPPED_FILES> 
 ```
 where <PATH_TO_ZIPPED_FILES> the path to any zipped file one might want to distribute to the workers to be used in the query execution.
 
-## Comment:
+## :exclamation: Comment:
 In the first implementations of the 4th Query, the subqueries _"Calculate the number of crimes committed with the use of firearms of any kind and the average distance (in km) of the crime scene i) to the police station that handled the case (liable) and ii) to the police station that is located closest to the crime scene (closest)"_ returned different results without any mistake being made, although they should'nt have. 
 
 The reason behind this "behaviour" was the fact that within the "united" dataframe of the 2010-to-2019-crimes-dataset and the 2020-to-curr-crimes-dataset there exist duplicates and as I used the "DR_NO" column for the closest_window partition `closest_window = Window.partitionBy("DR_NO").orderBy("distance")` in the [query_4_closest.py](./query_4_closest.py), the duplicates appeared on the same partition and were then removed by the following:
