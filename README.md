@@ -49,7 +49,7 @@ System setup's instructions can be found in the [Setup_README](/setup/README.md)
 
 Instructions regarding the data acquisition and insertion into the HDFS can be found in the [Data_README](/data/README.md).
 
-Queries' implementation can be found in the [Queries](/queries).
+Queries' implementation and their execution's instructions can be found in the [Queries Directory](/queries).
 
 The report can be found in the [ATDB-report](/ATDB-report.pdf).
 
