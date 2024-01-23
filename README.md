@@ -45,6 +45,14 @@ Print the total number of rows for the entire data-set and the data type of ever
 ---
 Full description can be found in the [ATDB_project_description](/advanced_db_project.pdf).
 
+System setup's instructions can be found in the [Setup_README](/setup/README.md).
+
+Instructions regarding the data acquisition and insertion into the HDFS can be found in the [Data_README](/data/README.md).
+
+Queries' implementation can be found in the [Queries](/queries).
+
+The report can be found in the [ATDB-report](/ATDB-report.pdf).
+
 
 
 
